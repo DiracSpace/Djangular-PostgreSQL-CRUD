@@ -699,10 +699,3 @@ Finalmente en la consola debemos hacer las migraciones y migrar
 $ python3 manage.py makemigrations
 $ python3 manage.py migrate
 ```
-
-# Referencias
-
-* https://www.django-rest-framework.org/tutorial/quickstart/
-* https://djangocentral.com/using-postgresql-with-django/
-* https://github.com/adamchainz/django-cors-headers
-* https://linuxize.com/post/how-to-list-databases-tables-in-postgreqsl/
