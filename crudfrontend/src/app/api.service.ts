@@ -14,9 +14,31 @@ export class ApiService {
     'Content-Type', 'application/json'
   );
 
-  // Get all Estudiantes
+  estudiante;
+  setData(estudianteSeleccionado){ this.estudiante = estudianteSeleccionado; }
+  getData(){ return this.estudiante; }
+
+  // GET todos Estudiantes
   getAllStudents(): Observable<any>
   {
     return this.http.get(this.base_url + 'estudiantes/', { headers: this.httpHeaders });
+  }
+
+  // GET un estudiante
+  getStudent(id): Observable<any>
+  {
+    return this.http.get(this.base_url + 'estudiantes/' + id + '/', { headers: this.httpHeaders });
+  }
+
+  // PUT un estudiante
+  updateStudent(): Observable<any>
+  {
+    const body = {
+      name: this.estudiante.name,
+      email: this.estudiante.email,
+      controlnum: this.estudiante.controlnum,
+      year: this.estudiante.year
+    };
+    return this.http.put(this.base_url + 'estudiantes/' + this.estudiante.id + '/', body, { headers: this.httpHeaders });
   }
 }

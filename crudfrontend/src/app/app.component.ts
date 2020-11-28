@@ -8,23 +8,64 @@ import { ApiService } from './api.service';
   providers: []
 })
 
-export class AppComponent 
-{
+export class AppComponent {
   title = 'crudfrontend';
   estudiantes = [];
 
-  constructor(private api: ApiService) { 
+  estudianteSeleccionado;
+
+  constructor(private api: ApiService) {
     this.getAllStudents();
+    this.estudianteSeleccionado = {
+      id: 0,
+      name: '',
+      email: '',
+      controlnum: '',
+      year: ''
+    };
   }
-  
+
   getAllStudents = () => {
     this.api.getAllStudents().subscribe(
-      (data:any) => {
+      (data: any) => {
         this.estudiantes = data;
       },
       error => {
         console.log(error);
       }
     );
+  }
+
+  estudianteClick = (estudiante) => {
+    this.api.getStudent(estudiante.id).subscribe(
+      (data: any) => {
+        this.estudianteSeleccionado = data;
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  }
+
+  actualizarEstudiante = () => {
+    this.api.setData(this.estudianteSeleccionado);
+    this.api.getData();
+
+    this.api.updateStudent().subscribe(
+      (data: any) => {
+        this.estudianteSeleccionado = data;
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  }
+
+  registrarEstudiante = () => {
+    console.log('post');
+  }
+
+  eliminarEstudiante = () => {
+    console.log('delete');
   }
 }
