@@ -54,6 +54,7 @@ export class AppComponent {
     this.api.updateStudent().subscribe(
       (data: any) => {
         this.estudianteSeleccionado = data;
+        this.getAllStudents();
       },
       error => {
         console.log(error);
@@ -62,10 +63,28 @@ export class AppComponent {
   }
 
   registrarEstudiante = () => {
-    console.log('post');
+    this.api.setData(this.estudianteSeleccionado);
+    this.api.getData();
+
+    this.api.registerStudent().subscribe(
+      (data: any) => {
+        this.estudianteSeleccionado = data;
+        this.getAllStudents();
+      },
+      error => {
+        console.log(error);
+      }
+    );
   }
 
   eliminarEstudiante = () => {
-    console.log('delete');
+    this.api.eraseStudent(this.estudianteSeleccionado.id).subscribe(
+      (data: any) => {
+        this.getAllStudents();
+      },
+      error => {
+        console.log(error);
+      }
+    );
   }
 }

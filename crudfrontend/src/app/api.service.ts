@@ -39,6 +39,26 @@ export class ApiService {
       controlnum: this.estudiante.controlnum,
       year: this.estudiante.year
     };
+
     return this.http.put(this.base_url + 'estudiantes/' + this.estudiante.id + '/', body, { headers: this.httpHeaders });
+  }
+
+  // POST un estudiante
+  registerStudent(): Observable<any>
+  {
+    const body = {
+      name: this.estudiante.name,
+      email: this.estudiante.email,
+      controlnum: this.estudiante.controlnum,
+      year: this.estudiante.year
+    };
+
+    return this.http.post(this.base_url + 'estudiantes/', body, { headers: this.httpHeaders });
+  }
+
+  // DELETE un estudiante
+  eraseStudent(id): Observable<any>
+  {
+    return this.http.delete(this.base_url + 'estudiantes/' + id + '/', { headers: this.httpHeaders });
   }
 }
