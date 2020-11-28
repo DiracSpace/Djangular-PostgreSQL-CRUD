@@ -1,10 +1,28 @@
+<style>
+  a {
+    cursor: pointer;
+  }
+</style>
+
 <div style="text-align: center;">
   <h2>{{ title }}</h2>
 </div>
 
 <ul>
   <li *ngFor="let estudiante of estudiantes">
-    <a>{{ estudiante.name }}</a>
+    <a (click)="estudianteClick(estudiante)">{{ estudiante.name }}</a>
   </li>
 </ul>
+<hr />
+
+<a>Name: <input type="text" [(ngModel)]="estudianteSeleccionado.name" /></a><br />
+<a>Email: <input type="text" [(ngModel)]="estudianteSeleccionado.email" /></a><br />
+<a>Control number: <input type="text" [(ngModel)]="estudianteSeleccionado.controlnum" /></a><br />
+<a>Year: <input type="text" [(ngModel)]="estudianteSeleccionado.year" /></a><br />
+<hr />
+
+<button (click)="actualizarEstudiante()"> PUT </button>
+<button (click)="registrarEstudiante()"> POST </button>
+<button (click)="eliminarEstudiante()"> DELETE </button>
+
 <router-outlet></router-outlet>
