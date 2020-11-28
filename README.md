@@ -201,7 +201,7 @@ Ahora, si agregamos desde la interfaz web, debemos refrescar para poder ver todo
 Ahora, por fin implementaremos nuestro frontend para desplegar una lista de nuestros objetos ya ingresados. Dentro de nuestro directorio padre `/CRUD/` debería estar el proyecto Django `/crudbackend/`. Ahora, haremos lo siguiente y aceptaremos las dos preguntas. Personalmente, elegí CSS porque me siento más cómodo con ello.
 
 ```bash
-$ ng new crudfrontend
+$ ng new --skip-git crudfrontend
 
 ? Do you want to enforce stricter type checking and stricter bundle budgets in the workspace?
   This setting helps improve maintainability and catch bugs ahead of time.
